@@ -1,0 +1,27 @@
+package customer_pack;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class Student {
+
+	public static void main(String[] args) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/dname","root","root");
+			PreparedStatement preparedStatement=connection.prepareStatement("insert into student values (?,?,?,?,?,?)");
+			preparedStatement.setInt(1,100);
+			preparedStatement.setString(2,"vivek");
+			preparedStatement.setInt(3, 23);
+			preparedStatement.setString(4,"male");
+			preparedStatement.setInt(5, 80);
+			preparedStatement.setInt(6, 986676599);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}

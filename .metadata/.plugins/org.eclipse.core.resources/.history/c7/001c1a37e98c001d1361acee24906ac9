@@ -1,0 +1,26 @@
+package com.ly;
+
+import java.util.Scanner;
+
+public class Student {
+
+	public static void main(String[] args) {
+		Scanner ip=new Scanner(System.in);
+		StudentInterface si=new StudentImplementation();
+		System.out.println("1:save student details\n2:delete student\n3:update student\n4:get All Student\n5:get Student By Marks");
+		while(true)
+		{
+			System.out.println("enter your choice in b/w 1 to 5");
+			int ch=ip.nextInt();
+			switch (ch){
+				case 1: si.saveStudent();break;
+				case 2: si.deleteStudent();break;
+				case 3: si.updateStudent();break;
+				case 4: si.getAllStudent();break;
+				case 5: si.getStudentByMarks();break;
+			default:System.out.println("invalid choice ");
+			}
+		}
+	}
+
+}

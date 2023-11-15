@@ -1,0 +1,13 @@
+package com.ly;
+
+import java.util.Scanner;
+
+public class Student {
+
+	public static void main(String[] args) {
+		Scanner ip=new Scanner(System.in);
+		System.out.println("1:save student details\n2:delete student\n3:update student\n4:get All Student\n5:get Student By Marks");
+		
+	}
+
+}

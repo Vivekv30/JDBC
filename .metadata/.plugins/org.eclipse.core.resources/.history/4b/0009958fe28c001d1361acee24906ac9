@@ -1,0 +1,97 @@
+package com.ly;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class StudentImplementation implements StudentInterface {
+
+	@Override
+	public void saveStudent() {
+		Scanner ip=new Scanner(System.in);
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdb","root","root");
+			PreparedStatement preparedStatement=connection.prepareStatement("insert into student values (?,?,?,?,?)");
+			System.out.println("enter the student id");
+			preparedStatement.setInt(1,ip.nextInt());
+			System.out.println("enter the student name");
+			preparedStatement.setString(2,ip.next());
+			System.out.println("enter the student age");
+			preparedStatement.setInt(3,ip.nextInt());
+			System.out.println("enter the student phone number");
+			preparedStatement.setInt(4,ip.nextInt());
+			System.out.println("enter the student marks");
+			preparedStatement.setDouble(5,ip.nextDouble());
+			preparedStatement.execute();
+			connection.close();
+			System.out.println("student data saved");
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void deleteStudent() {
+		Scanner ip=new Scanner(System.in);
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdb","root","root");
+			PreparedStatement preparedStatement=connection.prepareStatement("delete from student where id=?");
+			System.out.println("enter the student id");
+			preparedStatement.setInt(1,ip.nextInt());
+			preparedStatement.execute();
+			connection.close();
+			System.out.println("data deleted");
+		}catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		}
+	
+
+	@Override
+	public void updateStudent() {
+		Scanner ip=new Scanner(System.in);
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdb","root","root");
+			System.out.println("which data you want to update\n1:id\n2:name\n3:age\n4:phno\n5:marks\nEnter your choice b/w 1 to 5");
+			switch (ip.nextInt()) {
+			case 1: {
+				PreparedStatement preparedStatement=connection.prepareStatement("update student set id=? where ename=?");
+				System.out.println("enter the student name");
+				preparedStatement.setString(2,ip.next());
+				System.out.println("enter the student new id");
+				preparedStatement.setInt(1,ip.nextInt());
+				preparedStatement.execute();
+				}
+			default:
+			}
+			connection.close();
+			System.out.println("data updated");
+		}catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+	}
+
+	@Override
+	public void getAllStudent() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getStudentByMarks() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

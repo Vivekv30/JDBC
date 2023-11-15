@@ -1,0 +1,7 @@
+package yfyfy.com;
+
+import java.sql.Connection;
+
+public class Yesh implements Connection {
+
+}

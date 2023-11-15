@@ -1,0 +1,41 @@
+package com.ly;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class Employee {
+
+	public static void main(String[] args) {
+		Scanner ip=new Scanner(System.in);
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdetails","root","root");
+			PreparedStatement preparedStatement=connection.prepareStatement("insert into values(?,?,?,?,?,?)");
+			System.out.println("enter id");
+			preparedStatement.setInt(1, ip.nextInt());
+			System.out.println("enter name");
+			preparedStatement.setString(2, ip.next());
+			System.out.println("enter age");
+			preparedStatement.setInt(3, ip.nextInt());
+			System.out.println("enter salary");
+			preparedStatement.setInt(4, ip.nextInt());
+			System.out.println("enter phno");
+			preparedStatement.setInt(5, ip.nextInt());
+			System.out.println("enter Designation");
+			preparedStatement.setString(2, ip.next());
+			
+			
+			
+			preparedStatement.execute();
+			connection.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

@@ -1,0 +1,25 @@
+package customer_pack;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class RetrieveTheData {
+
+	public static void main(String[] args) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdetails","root","root");
+			PreparedStatement preparedStatement=connection.prepareStatement("select *from student where marks>80 and age>22");
+			ResultSet resultSet=preparedStatement.executeQuery();
+//			while(resultSet)
+			preparedStatement.execute();
+			System.out.println("data updated");
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

@@ -1,0 +1,37 @@
+package com.ly;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class Deletedata {
+
+	public static void main(String[] args) {
+		Scanner ip=new Scanner(System.in);
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/employeedb","root","root");
+			PreparedStatement preparedStatement=connection.prepareStatement("delete from employeetab where phonenumber=? and sal=?");
+			System.out.println("enter id");
+			
+			
+			preparedStatement.execute();
+			connection.close();
+			System.out.println("data saved");
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+
+
+
+
+
+	}
+
+}

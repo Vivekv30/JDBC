@@ -1,0 +1,61 @@
+package com.ly;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class StudentImplementation implements StudentInterface {
+
+	@Override
+	public void saveStudent() {
+		Scanner ip=new Scanner(System.in);
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdb","root","root");
+			PreparedStatement preparedStatement=connection.prepareStatement("insert into student values (?,?,?,?,?");
+			System.out.println("enter the student id");
+			preparedStatement.setInt(1,ip.nextInt());
+			System.out.println("enter the student name");
+			preparedStatement.setString(2,ip.next());
+			System.out.println("enter the student age");
+			preparedStatement.setInt(3,ip.nextInt());
+			System.out.println("enter the student phone number");
+			preparedStatement.setInt(4,ip.nextInt());
+			System.out.println("enter the student marks");
+			preparedStatement.setDouble(5,ip.nextDouble());
+			preparedStatement.execute();
+			preparedStatement.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void deleteStudent() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateStudent() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getAllStudent() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getStudentByMarks() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
