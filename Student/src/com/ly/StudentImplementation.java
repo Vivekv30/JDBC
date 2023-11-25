@@ -55,7 +55,6 @@ public class StudentImplementation implements StudentInterface {
 
 	}
 
-
 	@Override
 	public void updateStudent() {
 		Scanner ip=new Scanner(System.in);
@@ -140,11 +139,6 @@ public class StudentImplementation implements StudentInterface {
 			e.printStackTrace();
 		}
 	}
-	static String func()
-	{
-		String s="";
-		return s;
-	}
 
 	@Override
 	public void getStudentByMarks() {
@@ -178,5 +172,3 @@ public class StudentImplementation implements StudentInterface {
 		}
 	}
 }
-
-
